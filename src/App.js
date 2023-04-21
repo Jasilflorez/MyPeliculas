@@ -7,7 +7,7 @@ import YouTube from 'react-youtube';
 
 function App() {
   const API_URL = "https://api.themoviedb.org/3";
-  const API_KEY = "4f5f43495afcc67e9553f6c684a82f84";
+  const API_KEY = "39ea226bf3c9e061c6161fa895c7f6d2";
   const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
 
   // endpoint para las imagenes
@@ -20,7 +20,6 @@ function App() {
   const [trailer, setTrailer] = useState(null);
   const [movie, setMovie] = useState({ title: "Loading Movies" });
   const [playing, setPlaying] = useState(false);
-
   // funcion para realizar la peticion get a la api
   const fetchMovies = async (searchKey) => {
     const type = searchKey ? "search" : "discover";
@@ -32,7 +31,7 @@ function App() {
         query: searchKey,
       },
     });
-    //console.log('data',results);
+    console.log(results ,'<3 <3');
     //setSelectedMovie(results[0])
 
     setMovies(results);
@@ -50,6 +49,7 @@ function App() {
         api_key: API_KEY,
         append_to_response: "videos",
       },
+
     });
 
     if (data.videos && data.videos.results) {
@@ -67,7 +67,6 @@ function App() {
     // console.log(data);
     // setSelectedMovie(movie)
     fetchMovie(movie.id);
-
     setMovie(movie);
     window.scrollTo(0, 0);
   };
@@ -83,53 +82,32 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h2 className="text-center mt-5 mb-5">Trailer Popular Movies</h2>
+    <div className='Container'>
+      <div className='box-titulo'>
+
+      <h1 className="texto-h1">YOU FILM</h1>
 
       {/* el buscador */}
-      <form className="container mb-4" onSubmit={searchMovies}>
+      <form className="search" onSubmit={searchMovies}>
         <input
+        className='input-search'
           type="text"
           placeholder="search"
           onChange={(e) => setSearchKey(e.target.value)}
         />
-        <button className="btn btn-primary">Search</button>
+        <button className="btn-success">Search</button>
       </form>
-
-      {/* contenedor para previsualizar  */}
-      {/* <div>
-        <div
-          className="viewtrailer"
-          style={{
-            backgroundImage: `url("${IMAGE_PATH}${movie.backdrop_path}")`,
-          }}
-        >
-          
-          
-
-          <div className="container">
-
-            
-            
-            <button className="boton">Play Trailer</button>
-            <h1 className="text-white">{movie.title}</h1>
-            {movie.overview ? (
-              <p className="text-white">{movie.overview}</p>
-            ) : null}
-          </div>
-        </div>
-      </div> */}
-
-      {/* esto es por prueba */}
+      </div>
       <div>
         <main>
           {movie ? (
             <div
               className="viewtrailer"
               style={{
-                backgroundImage: `url("${IMAGE_PATH}${movie.backdrop_path}")`,
+                backgroundImage: `url(${IMAGE_PATH}${movie.backdrop_path})`,
               }}
             >
+              {console.log(`${IMAGE_PATH}${movie.backdrop_path}`)}
               {playing ? (
                 <>
                   <YouTube
