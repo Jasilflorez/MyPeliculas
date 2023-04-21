@@ -1,4 +1,4 @@
-
+import { FcSearch } from 'react-icons/fc';
 import { useEffect } from 'react';
 import axios from 'axios'
 import './App.css';
@@ -73,10 +73,6 @@ function App() {
   return (
     <div className='Container'>
       <div className='box-titulo'>
-
-        <h1 className="texto-h1">YOU FILM</h1>
-
-        {/* el buscador */}
         <form className="search" onSubmit={searchMovies}>
           <input
             className='input-search'
@@ -84,7 +80,7 @@ function App() {
             placeholder="search"
             onChange={(e) => setSearchKey(e.target.value)}
           />
-          <button className="btn-success">Search</button>
+          <button className="btn-Sarch">{<FcSearch/>}</button>
         </form>
       </div>
       <div>
@@ -118,7 +114,7 @@ function App() {
                       },
                     }}
                   />
-                  <button onClick={() => setPlaying(false)} className="boton">
+                  <button onClick={() => setPlaying(false)} className="btn btn-info">
                     Close
                   </button>
                 </>
@@ -127,7 +123,7 @@ function App() {
                   <div className="">
                     {trailer ? (
                       <button
-                        className="boton"
+                        className="btn btn-info"
                         onClick={() => setPlaying(true)}
                         type="button"
                       >
