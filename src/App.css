@@ -22,19 +22,22 @@
   color: aliceblue;
   text-decoration: none;
 }
-
+.col-md-4 img{
+  border-radius: 15px;
+  border: solid 1px rgb(244, 242, 242);
+  transition: transform .5s ease;
+}
+.col-md-4 img:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
 .box-titulo{
   width: 100%;
-  height: 100%;
-  color: rgb(0, 0, 0);
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url("./img/banner.jpg");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
 }
 .texto-h1{
   background-color: rgba(0, 0, 0, 0.849);
@@ -44,25 +47,32 @@
   box-shadow: 0px 0px 15px 8px rgb(3, 3, 3);
 }
 .search{
-  height: 50%;
-  width: 50%;
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 }
 .input-search{
-  width: 250px;
-  height: 38px;
+  width: 350px;
+  font-size: 20px;
+  height: 37px;
+  font-family: cursive;
   border: none;
-  background-color: rgb(207, 206, 206);
+  background-color: rgb(206, 207, 207);
 }
-.btn-success{
-  height: 38px;
+.btn-Sarch{
+  width: 54px;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37px;
   border-radius: 1px;
   border: none;
-  background-color: crimson;
+  background-color: rgb(14, 194, 222);
 }
-.btn-success:hover{
-  background-color: rgb(12, 81, 141);
+.btn-Sarch:hover{
+  background-color: rgb(44, 245, 40); 
 }
