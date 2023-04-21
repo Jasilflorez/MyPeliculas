@@ -10,17 +10,13 @@ function App() {
   const API_KEY = "39ea226bf3c9e061c6161fa895c7f6d2";
   const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
 
-  // endpoint para las imagenes
   const URL_IMAGE = "https://image.tmdb.org/t/p/original";
 
-  // variables de estado
   const [movies, setMovies] = useState([]);
   const [searchKey, setSearchKey] = useState("");
-  //const [selectedMovie, setSelectedMovie] = useState({})
   const [trailer, setTrailer] = useState(null);
   const [movie, setMovie] = useState({ title: "Loading Movies" });
   const [playing, setPlaying] = useState(false);
-  // funcion para realizar la peticion get a la api
   const fetchMovies = async (searchKey) => {
     const type = searchKey ? "search" : "discover";
     const {
@@ -31,8 +27,7 @@ function App() {
         query: searchKey,
       },
     });
-    console.log(results ,'<3 <3');
-    //setSelectedMovie(results[0])
+    console.log(results, '<3 <3');
 
     setMovies(results);
     setMovie(results[0]);
@@ -42,7 +37,6 @@ function App() {
     }
   };
 
-  // funcion para la peticion de un solo objeto y mostrar en reproductor de videos
   const fetchMovie = async (id) => {
     const { data } = await axios.get(`${API_URL}/movie/${id}`, {
       params: {
@@ -58,20 +52,15 @@ function App() {
       );
       setTrailer(trailer ? trailer : data.videos.results[0]);
     }
-    //return data
     setMovie(data);
   };
 
   const selectMovie = async (movie) => {
-    // const data = await fetchMovie(movie.id)
-    // console.log(data);
-    // setSelectedMovie(movie)
     fetchMovie(movie.id);
     setMovie(movie);
     window.scrollTo(0, 0);
   };
 
-  // funcion para buscar peliculas
   const searchMovies = (e) => {
     e.preventDefault();
     fetchMovies(searchKey);
@@ -85,18 +74,18 @@ function App() {
     <div className='Container'>
       <div className='box-titulo'>
 
-      <h1 className="texto-h1">YOU FILM</h1>
+        <h1 className="texto-h1">YOU FILM</h1>
 
-      {/* el buscador */}
-      <form className="search" onSubmit={searchMovies}>
-        <input
-        className='input-search'
-          type="text"
-          placeholder="search"
-          onChange={(e) => setSearchKey(e.target.value)}
-        />
-        <button className="btn-success">Search</button>
-      </form>
+        {/* el buscador */}
+        <form className="search" onSubmit={searchMovies}>
+          <input
+            className='input-search'
+            type="text"
+            placeholder="search"
+            onChange={(e) => setSearchKey(e.target.value)}
+          />
+          <button className="btn-success">Search</button>
+        </form>
       </div>
       <div>
         <main>
@@ -157,7 +146,6 @@ function App() {
         </main>
       </div>
 
-      {/* contenedor para mostrar los posters y las peliculas en la peticion a la api */}
       <div className="container mt-3">
         <div className="row">
           {movies.map((movie) => (
